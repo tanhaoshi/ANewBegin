@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MyApplication.iml" filepath="$PROJECT_DIR$/MyApplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SwipeMenuListView/SwipeMenuListView.iml" filepath="$PROJECT_DIR$/SwipeMenuListView/SwipeMenuListView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TanHao/TanHao.iml" filepath="$PROJECT_DIR$/TanHao/TanHao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/anewbegin/anewbegin.iml" filepath="$PROJECT_DIR$/anewbegin/anewbegin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jnitext/jnitext.iml" filepath="$PROJECT_DIR$/jnitext/jnitext.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+    </modules>
+  </component>
+</project>

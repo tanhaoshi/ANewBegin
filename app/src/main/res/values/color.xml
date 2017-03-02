@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="pink">#ff6262</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#eeeeee</color>
+    <color name="light_blue">#6593cb</color>
+    <color name="green">#73AA29</color>
+    <color name="deep_blue">#7d84c9</color>
+    <color name="yellow">#50abd8</color>
+    <color name="gray_blue">#e3bfa1</color>
+    <color name="cyan">#92c3a7</color>
+    <color name="back_green">#91AC73</color>
+    <color name="blue">#ff0faeff</color>
+    <color name="blue_pressed">#ff3094cf</color>
+    <color name="TextColordarker">#666666</color>
+    <color name="camera_menu_bg">#aa111213</color>
+    <color name="com_app_background">#ff3366cc</color>
+    <color name="com_header_background">#ff0c2637</color>
+    <color name="com_nav_background">#fff5f5f5</color>
+    <color name="complex_item_btn_bg">#ffcaeeff</color>
+</resources>

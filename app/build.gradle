@@ -1,0 +1,69 @@
+apply plugin: 'com.android.application'//作为主程序的标识
+apply plugin: 'com.jakewharton.hugo'//标识为Android Library
+apply plugin: 'android-apt'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias '123456'
+            keyPassword '123456'
+            storeFile file('D:/TextDemo/app.jks')
+            storePassword '123456'
+        }
+    }
+    compileSdkVersion 21  //当前向前兼容sdk的版本
+    buildToolsVersion '21.1.2' ////构建工具的版本
+    defaultConfig {
+        applicationId "com.example.administrator.myapplication" //应用程序的id，在市场上使用的包名
+        minSdkVersion 14//最小sdk版本支持
+        targetSdkVersion 21//目标sdk版本
+        versionCode 1//应用程序版本号
+        versionName "1.0"//应用程序版本名称
+        signingConfig signingConfigs.config
+        ndk{
+            moduleName "hello-jni"         //生成的so名字
+            ldLibs "log", "z", "m"
+            abiFilters "armeabi", "armeabi-v7a", "x86"  //输出指定三种abi体系结构下的so库。目前可有可无。
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false //混淆是否开启
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
+            signingConfig signingConfigs.config
+        }
+    }
+    productFlavors {
+    }
+}
+//sdk版本设置规则
+//minSdkVersion <= targetSdkVersion <= compileSdkVersion
+//minSdkVersion <= buildToolsVersion <= compileSdkVersion
+
+dependencies { //依赖外部的类库
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.android.support:recyclerview-v7:21.0.0'
+    compile files('libs/umeng-analytics-v5.2.4.jar')
+    compile files('libs/umeng-update-v2.4.2.jar')
+    compile files('libs/android-async-http-1.4.6.jar')
+    compile files('libs/fastjson-1.1.45.android.jar')
+    compile files('libs/BaiduLBS_Android.jar')
+    compile files('libs/libammsdk.jar')
+    compile files('libs/GetuiSDK2.9.3.0.jar')
+    compile files('libs/json_simple-1.1.jar')
+    compile project(':library')
+    //okhttp
+    compile files('libs/okhttp3.jar')
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    //butterknife
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    //rxjava
+    compile 'io.reactivex:rxjava:1.0.14'
+    compile 'io.reactivex:rxandroid:1.0.1'
+}

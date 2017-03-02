@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.administrator.myapplication.RecycleViewActivity">
+   <LinearLayout
+       android:id="@+id/search_bar"
+       android:layout_width="match_parent"
+       android:layout_height="50dp"
+       android:background="@android:color/transparent"
+       android:orientation="horizontal"
+       android:visibility="gone">
+       <EditText
+           android:id="@+id/searh_editext"
+           android:layout_width="match_parent"
+           android:layout_height="30dp"
+           android:layout_gravity="center_vertical"
+           android:layout_marginRight="20dp"
+           android:layout_marginLeft="20dp"
+           android:hint="搜索简书的内容和朋友"
+           android:textColorHint="#000"
+           android:textSize="13sp"
+           android:gravity="center"
+           android:background="@drawable/selector_bagrounder_shape"/>
+       </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/id_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+</LinearLayout>

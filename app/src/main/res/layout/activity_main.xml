@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+  <Button
+      android:id="@+id/find_swipe"
+      android:layout_margin="5dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="find swipe widget"
+      android:textSize="16sp"
+      android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/find_ikonw"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="i know't widget"
+        android:textSize="16sp"
+        android:layout_weight="1"/>
+</LinearLayout>

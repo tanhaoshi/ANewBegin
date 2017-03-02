@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+       <!--水平占满 竖直无限拉长-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:background="#44ff0000"
+                android:text="1"
+                android:id="@+id/text_writer"
+                />
+      <!-- 垂直占满，水平无限拉长 -->
+        <!--<TextView-->
+            <!--android:layout_width="80dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="center"-->
+            <!--android:background="#44ff0000"-->
+            <!--android:text="1"-->
+            <!--android:id="@+id/text_writer"-->
+            <!--/>-->
+</LinearLayout>

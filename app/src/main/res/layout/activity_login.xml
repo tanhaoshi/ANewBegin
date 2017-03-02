@@ -1,0 +1,74 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    tools:context="com.example.administrator.myapplication.SingleLogin.LoginActivity">
+
+    <Button
+        android:layout_marginTop="50dp"
+        android:id="@+id/mbutton"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:gravity="center"
+        android:text="Login"
+        android:textSize="20sp"
+        android:background="@color/pink"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#ffffff"/>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="80dp"
+            android:text="账号:"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:gravity="end"
+            android:layout_marginTop="5dp"
+            android:layout_height="match_parent" />
+        <EditText
+            android:id="@+id/login_name"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/black"
+            android:layout_marginRight="60dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="80dp"
+            android:text="密码:"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:gravity="end"
+            android:layout_marginTop="5dp"
+            android:layout_height="match_parent" />
+        <EditText
+            android:id="@+id/login_password"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/black"
+            android:layout_marginRight="60dp"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_margin="30dp"
+        android:text="登入"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:background="@color/complex_item_btn_bg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+</LinearLayout>
