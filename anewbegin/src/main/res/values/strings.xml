@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">ANewBegin</string>
+
+    <!-- fragment text -->
+    <string name="fra_business_crown">热歌榜</string>
+    <string name="fra_business_user">歌手馆</string>
+    <string name="fra_business_tv">最新MV</string>
+    <string name="fra_business_statison">私人电台</string>
+
+    <string name="adapter_business_text">推荐新闻</string>
+    <string name="fra_business_text">推荐广告</string>
+
+    <string name="fra_business_news">更多新闻</string>
 </resources>

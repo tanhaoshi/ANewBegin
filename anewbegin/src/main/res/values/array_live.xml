@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="live_type_id">
+        <item></item>
+        <item>douyu</item>
+        <item>panda</item>
+        <item>zhanqi</item>
+        <item>yy</item>
+        <item>longzhu</item>
+        <item>quanmin</item>
+        <item>cc</item>
+        <item>huomaotv</item>
+    </string-array>
+
+    <string-array name="live_type_name">
+        <item>全部</item>
+        <item>斗鱼</item>
+        <item>熊猫</item>
+        <item>战旗</item>
+        <item>虎牙</item>
+        <item>龙珠</item>
+        <item>全民</item>
+        <item>CC</item>
+        <item>火猫</item>
+    </string-array>
+    
+    <string-array name="live_title">
+        <item>英雄联盟</item>
+        <item>守望先锋</item>
+        <item>DOTA2</item>
+        <item>炉石传说</item>
+        <item>CSGO</item>
+        <item>热血传奇</item>
+    </string-array>
+
+    <integer-array name="live_index">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </integer-array>
+</resources>

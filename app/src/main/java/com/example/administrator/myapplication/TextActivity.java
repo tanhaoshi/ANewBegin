@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.example.administrator.myapplication.BasePackage.BaseActivity;
 
+import hugo.weaving.DebugLog;
+
 public class TextActivity extends BaseActivity {
 
     public static final String TAG = "TextActivity";
@@ -14,6 +16,7 @@ public class TextActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text);
        // initView();
+        textvoid();
     }
 
     @Override
@@ -25,6 +28,13 @@ public class TextActivity extends BaseActivity {
     @Override
     protected int getContentView() {
         return R.layout.activity_text;
+    }
+
+    @DebugLog
+    void textvoid(){
+        for(int i = 0; i<100;i++){
+            System.out.println(i);
+        }
     }
 
 }

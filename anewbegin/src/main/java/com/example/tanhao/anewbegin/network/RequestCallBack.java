@@ -6,7 +6,7 @@ package com.example.tanhao.anewbegin.network;
 
 public interface RequestCallBack<T> {
 
-    void onStart();//请求前
+    void onStart(T data);//请求前
 
     void onSuccess(T data); //请求成功
 

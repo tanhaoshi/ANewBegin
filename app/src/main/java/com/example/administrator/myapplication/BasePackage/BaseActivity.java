@@ -8,6 +8,9 @@ import android.view.Window;
 
 import com.example.administrator.myapplication.OkHttpPackage.OkHttputil;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 
 /**
  * Created by tanhaoshi on 2016/12/6.
@@ -16,20 +19,18 @@ public abstract class BaseActivity extends Activity implements BaseFuncIml,View.
 
     public OkHttputil mOkHttputil;
     public static final String TAG = "BaseActivity";
+    private Unbinder m;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(getContentView());
+        m = ButterKnife.bind(this);
         mOkHttputil = new OkHttputil(this);
         initView();
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
 
     @Override
     protected void onResume() {
@@ -65,4 +66,11 @@ public abstract class BaseActivity extends Activity implements BaseFuncIml,View.
 
     protected abstract int getContentView();
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(m != null){
+            m.unbind();
+        }
+    }
 }

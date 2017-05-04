@@ -1,52 +1,147 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.jakewharton.hugo'
 
 android {
-    compileSdkVersion 24
+    //https://juejin.im/entry/58f80d91da2f60005da3f8c2 gradle实践
+    //我们运行的min Sdk Version可以设置为最低的系统版本，
+    //但是Compile Sdk Version和Build Tools Version一定不能一起更改为低版本，否则会报一大堆的错误。
+    //compileSdkVersion 告诉 Gradle 用哪个 Android SDK 版本编译你的应用
+    //使用任何新添加的 API 就需要使用对应 Level 的 Android SDK。
+    compileSdkVersion 25
     buildToolsVersion "25.0.2"
 
+    //解决9.path图片问题，解决图片无法拉伸的问题
+    //解决 some file 图片路径失效等问题
+    aaptOptions{
+        cruncherEnabled = false
+        useNewCruncher = false
+    }
+
     defaultConfig {
+        //修改识别id会出现如下错误
+        ////Error:Execution failed for task ':commerce-app:processDebugResources'.
+        //> com.android.ide.common.process.ProcessException: Failed to execute aapt
         applicationId "com.example.tanhao.anewbegin"
-        minSdkVersion 19
-        targetSdkVersion 24
+        //minSdkVersion 则是应用可以运行的最低要求。
+        // minSdkVersion 是 Google Play 商店用来判断用户设备是否可以安装某个应用的标志之一。
+        minSdkVersion 15
+        //targetSdkVersion 是 Android 提供向前兼容的主要依据，在应用的 targetSdkVersion
+        // 没有更新之前系统不会应用最新的行为变化。这允许你在适应新的行为变化之前就可以使用新的 API
+
+        targetSdkVersion 25
         versionCode 1
+
         versionName "1.0"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        // Enabling multidex support.
+        multiDexEnabled true
     }
     buildTypes {
+
         release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
-    aaptOptions{
-        cruncherEnabled = false
-        useNewCruncher = false
+    allprojects {
+        repositories {
+            maven { url "https://jitpack.io" }
+        }
+    }
+    //避免架包重复使用的东西 dex文件编译不过去
+//    dexOptions {
+//        preDexLibraries = false
+//    }
+
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java', 'src/main/java-gen']
+        }
     }
 }
 
+//afterEvaluate {
+//    tasks.matching {
+//        it.name.startsWith('dex')
+//    }.each { dx ->
+//        if (dx.additionalParameters == null) {
+//            dx.additionalParameters = []
+//        }
+//        dx.additionalParameters += '--multi-dex'
+//        // 设置multidex.keep文件中class为第一个dex文件中包含的class，如果没有下一项设置此项无作用
+//        dx.additionalParameters += "--main-dex-list=$projectDir/multidex.keep".toString()
+//        //此项添加后第一个classes.dex文件只能包含-main-dex-list列表中class
+//        dx.additionalParameters += '--minimal-main-dex'
+//    }
+//}
+
+afterEvaluate {
+    tasks.matching {
+        it.name.startsWith('dex')
+    }.each { dx ->
+        if (dx.additionalParameters == null) {
+            dx.additionalParameters = ['--multi-dex']
+        } else {
+            dx.additionalParameters += '--multi-dex'
+        }
+    }
+}
+    //provided避免各个模块重复使用的相同的架包
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    provided fileTree(include: ['*.jar'], dir: 'libs')
     //dagger2
     compile 'com.google.dagger:dagger:2.0.2'
     apt 'com.google.dagger:dagger-compiler:2.0.2'
-    //v7
-    compile 'com.android.support:appcompat-v7:24.1.0'
-
     testCompile 'junit:junit:4.12'
+    //inject
+    compile 'javax.inject:javax.inject:1'
+    compile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    //线性百分比布局
+    compile 'com.android.support:percent:24.0.0'
+    //ahbottomnavigation
+    compile 'com.aurelhubert:ahbottomnavigation:1.3.3'
+    //banner 图片无限轮播
+    compile 'com.youth.banner:banner:1.4.2'
+    //glide图片加载
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    //gson
+    compile 'com.google.code.gson:gson:2.8.0'
+    //converter-gson 与 adpter-rxjava
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    //万能adpater
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.7'
+    // dialogutil工具 https://github.com/hss01248/DialogUtil
+    compile 'com.github.hss01248:DialogUtil:1.0.7'
+    //类似 电话薄 字母查找https://github.com/saiwu-bigkoo/Android-QuickSideBar
+    compile 'com.bigkoo:quicksidebar:1.0.3'
+    //更多实用小框架 https://juejin.im/post/58f61bb55c497d006ca294bb
+    //v7
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    //recyclerview
+    compile 'com.android.support:recyclerview-v7:25.2.0'
+    //greendao
+    compile 'org.greenrobot:greendao:2.2.0'
     //butterknife
     compile 'com.jakewharton:butterknife:8.4.0'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
-    //inject
-    compile 'javax.inject:javax.inject:1'
     //rxjava
-    compile 'io.reactivex:rxandroid:1.2.0'
     compile 'io.reactivex:rxjava:1.1.5'
-
-    compile 'com.android.support.test.espresso:espresso-core:2.2.2'
-    //线性百分比布局
-    compile'com.android.support:percent:24.0.0'
+    compile 'io.reactivex:rxandroid:1.2.0'
+    //retrofit与okhttp
+    compile files('libs/okhttp3.jar')
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    //fastjson
+    compile 'com.alibaba:fastjson:1.2.10'
+    //KLog
+    compile 'com.github.zhaokaiqiang.klog:library:1.5.0'
+    //色调
+    compile 'com.android.support:palette-v7:25.2.0'
+    compile 'com.android.support:support-v4:25.2.0'
+    //Android 分包dex
+    compile 'com.android.support:multidex:1.0.0'
 }

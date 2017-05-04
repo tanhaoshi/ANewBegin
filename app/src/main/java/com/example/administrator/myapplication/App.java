@@ -39,6 +39,11 @@ import okhttp3.OkHttpClient;
 
     public class App extends Application {
 
+    //?postdata=
+    //http://192.168.191.1:8081/becp/buyer/login?postdata={"loginName":"testtest","password":"1qazxsw2","platName":"test.jngcxh.com"}
+    //http://testtma.56yongche.com/becp/buyer/login?postdata={"loginName":"testtest","password":"1qazxsw2","platName":"test.jngcxh.com"}
+    //http://testtma.56yongche.com/becp/buyer/login{"loginName":"testtest","password":"1qazxsw2","platName":"test.jngcxh.com"}
+
         public static OkHttpClient mOkHttpClient;
         public static final String imagePath = Environment.getExternalStorageDirectory()+"/DCIM/Camera/";
         public static final String httpImagePaht = "http://192.168.191.1:8081/dida/owner/img_upload";

@@ -1,44 +1,69 @@
 package com.example.tanhao.anewbegin.modules.login.presenter.impl;
 
-import android.support.annotation.NonNull;
-import android.util.Log;
+import android.content.Context;
 
-import com.example.tanhao.anewbegin.base.BasePresenter.PresenterLife;
-import com.example.tanhao.anewbegin.base.BaseView.BaseViews;
-import com.example.tanhao.anewbegin.utils.User;
+import com.example.tanhao.anewbegin.Constant;
+import com.example.tanhao.anewbegin.base.BasePresenter.BasePresenter;
+import com.example.tanhao.anewbegin.modules.login.module.LoginInteractor;
+import com.example.tanhao.anewbegin.modules.login.module.impl.LoginInteractorImpl;
+import com.example.tanhao.anewbegin.modules.login.presenter.LoginPresenter;
+import com.example.tanhao.anewbegin.modules.login.view.LoginView;
+import com.example.tanhao.anewbegin.network.RequestCallBack;
+
+import java.util.Map;
 
 import javax.inject.Inject;
 
 /**
+ * @version 1.0
+ * @author TanHao
  * Created by tanhaoshi on 2017/2/21.
  */
 
-public class LoginPresenterImpl implements PresenterLife{
+public class LoginPresenterImpl extends BasePresenter<LoginView, com.example.User> implements LoginPresenter,RequestCallBack<com.example.User>{
 
-    User mUser;
+    private LoginInteractor<com.example.User>  mLoginInteractor;
 
     @Inject
-    public LoginPresenterImpl(User user){
-        Log.i("LoginPresenterImpl","程序进来了吗？");
-        this.mUser = user;
+    public LoginPresenterImpl(LoginInteractorImpl loginInteractorImpl){
+          this.mLoginInteractor = loginInteractorImpl;
     }
 
     @Override
-    public void onCreate() {
-
+    public void loginApp(Map<String, String> accomper, Context context) {
+        getView().showProgress(false);
+        mSubscription = mLoginInteractor.login(accomper,this,context, Constant.click_Login);
     }
 
     @Override
-    public void onBindView(@NonNull BaseViews baseViews) {
-
+    public void shareLoginApp(Map<String, String> map, Context context) {
+        getView().showProgress(false);
+        mSubscription = mLoginInteractor.login(map,this,context,Constant.share_login);
     }
 
     @Override
-    public void onStop() {
-
+    public void onCompleted() {
+        super.onCompleted();
+        getView().hideProgress();
     }
 
-    public String backString(){
-        return "今晚打老虎";
+    @Override
+    public void onSuccess(com.example.User data) {
+        super.onSuccess(data);
+        getView().hideProgress();
+        getView().loginApp(data);
+    }
+
+    @Override
+    public void onError(String errorMsg, boolean pullToRefresh) {
+        super.onError(errorMsg, pullToRefresh);
+        getView().hideProgress();
+    }
+
+    @Override
+    public void onStart(com.example.User user) {
+        super.onStart(user);
+        getView().hideProgress();
+        getView().shareLoginApp(user);
     }
 }

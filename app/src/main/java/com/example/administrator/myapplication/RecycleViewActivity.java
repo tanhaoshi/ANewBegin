@@ -1,6 +1,7 @@
 package com.example.administrator.myapplication;
 
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,12 +15,14 @@ import android.widget.TextView;
 import com.example.administrator.myapplication.BasePackage.BaseActivity;
 import com.example.administrator.myapplication.MVP.mvp.presenter.LoadDataPresenter;
 import com.example.administrator.myapplication.MVP.mvp.view.ILoaddataView;
-import com.example.administrator.myapplication.Util.DriverItemDecoration;
+import com.example.administrator.myapplication.Util.DividerGridItemDecoration;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+
 
 public class RecycleViewActivity extends BaseActivity implements ILoaddataView {
 
@@ -29,12 +32,6 @@ public class RecycleViewActivity extends BaseActivity implements ILoaddataView {
     private LoadDataPresenter presenter = new LoadDataPresenter(arrayList, this);
     private HomeAdapter homeAdapter;
 
-    /**
-     * 假设让我设计一个社交网络APP，我该如何设计它？
-     * 设计的话，我们肯定要根据业务来设计我们的APP 考虑多个方面，程序逻辑合理性能极佳后期可维护性极高，用户的方便，
-     * 我们要考虑的前期工作，我将要使用到的父类，我要如何使用java面向对象的思想来设计我的程序。
-     * 这里回想java面向对象的5大特征，继承，
-     */
     @BindView(R.id.search_bar)
     LinearLayout search_bar;
 
@@ -63,13 +60,20 @@ public class RecycleViewActivity extends BaseActivity implements ILoaddataView {
 //        id_recyclerview = (RecyclerView) findViewById(R.id.id_recyclerview);
 //        search_bar = (LinearLayout) findViewById(R.id.search_bar);
 //        searh_editext = (EditText) findViewById(R.id.searh_editext);
-        id_recyclerview.setLayoutManager(new LinearLayoutManager(this));
-        id_recyclerview.addItemDecoration(new DriverItemDecoration(RecycleViewActivity.this, DriverItemDecoration.VERTICAL_LIST));
+
+          //垂直的
+//        id_recyclerview.setLayoutManager(new LinearLayoutManager(this));
+//        id_recyclerview.addItemDecoration(new DriverItemDecoration(RecycleViewActivity.this, DriverItemDecoration.VERTICAL_LIST));
+
+
         //网格式布局所用到的  垂直
-        //id_recyclerview.setLayoutManager(new GridLayoutManager(RecycleViewActivity.this,4));
         //id_recyclerview.setLayoutManager(new StaggeredGridLayoutManager(4,StaggeredGridLayoutManager.HORIZONTAL));
+
+
         //问题出现 高度有问题
-        //id_recyclerview.addItemDecoration(new DividerGridItemDecoration(RecycleViewActivity.this));
+        //网格式
+        id_recyclerview.setLayoutManager(new GridLayoutManager(RecycleViewActivity.this,3));
+        id_recyclerview.addItemDecoration(new DividerGridItemDecoration(RecycleViewActivity.this));
 
         //arrayList = new ArrayList<>();
         //presenter = new LoadDataPresenter(arrayList,this);
@@ -87,7 +91,7 @@ public class RecycleViewActivity extends BaseActivity implements ILoaddataView {
 //                Log.i(TAG, "屏幕整体高度:" + ThisUtil.getWindowHeight(RecycleViewActivity.this));
 //                Log.i(TAG, "第一个可见子视图:" + getScollYDistance());
 //                Log.i(TAG, "滑动的距离:" + (-dy));
-            }
+        }
         });
     }
 

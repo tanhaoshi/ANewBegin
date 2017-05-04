@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <com.youth.banner.Banner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="173dp"
+        app:indicator_drawable_selected="@drawable/banner_red"
+        app:indicator_drawable_unselected="@drawable/banner_grey"
+        app:indicator_height="9dp"
+        app:indicator_margin="3dp"
+        app:indicator_width="9dp">
+    </com.youth.banner.Banner>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/fra_business_crown"
+            style="@style/fragment_business_text"
+            android:text="@string/fra_business_crown"
+            android:layout_gravity="center"
+            android:id="@+id/business_crown"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/fra_business_user"
+            style="@style/fragment_business_text"
+            android:text="@string/fra_business_user"
+            android:layout_gravity="center"
+            android:id="@+id/business_user"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/fra_business_tv"
+            style="@style/fragment_business_text"
+            android:text="@string/fra_business_tv"
+            android:layout_gravity="center"
+            android:id="@+id/business_tv"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/fra_business_station"
+            style="@style/fragment_business_text"
+            android:text="@string/fra_business_statison"
+            android:layout_gravity="center"
+            android:id="@+id/business_station"
+            />
+
+    </LinearLayout>
+
+    <include layout="@layout/base_text_layout"/>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_business"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="15dp"
+        >
+        </android.support.v7.widget.RecyclerView>
+
+    <include layout="@layout/base_view_line"/>
+
+     <TextView
+         android:layout_marginTop="5dp"
+         android:layout_width="match_parent"
+         android:layout_height="30dp"
+         android:text="@string/fra_business_news"
+         style="@style/base_text_style"
+         />
+
+    <include layout="@layout/base_text_layout"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="@string/fra_business_text"
+        style="@style/dapter_business_header_style"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="3dp"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_staggerd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

@@ -26,6 +26,8 @@
 
     <style name = "LoginThem" parent="BaseAppTheme">
         <!--<item name ="android:windowBackground">@drawable/login_bak</item>-->
+        <!--是否设置为全屏-->
+        <!-- 设置为全屏后状态栏会被挤掉 -->
         <item name ="android:windowFullscreen">false</item>
     </style>
 
@@ -34,9 +36,8 @@
     </style>
 
     <style name="ToolbarCenterTitle">
-        <item name="android:textSize">18sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#9b9b9b</item>
     </style>
 
     <style name="ToolbarRightText">
@@ -48,5 +49,37 @@
     <style name="SplashTheme" parent="BaseAppTheme">
         <item name="android:windowBackground">@drawable/splash_backgroud</item>
         <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="BaseToolbarCenterTitle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <!-- fragment style-->
+    <style name="fragment_business_text">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#9b9b9b</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:drawablePadding">3dp</item>
+    </style>
+
+    <!-- fragment adapter style-->
+    <style name="fragment_adapter_text">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#0b0505</item>
+    </style>
+
+    <!-- fragment adpter header style -->
+    <style name="dapter_business_header_style">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#0b0505</item>
+    </style>
+
+    <style name="base_text_style">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#212121</item>
     </style>
 </resources>

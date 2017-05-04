@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/jnitext/jnitext.iml" filepath="$PROJECT_DIR$/jnitext/jnitext.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mygreendaolib/mygreendaolib.iml" filepath="$PROJECT_DIR$/mygreendaolib/mygreendaolib.iml" />
     </modules>
   </component>
 </project>

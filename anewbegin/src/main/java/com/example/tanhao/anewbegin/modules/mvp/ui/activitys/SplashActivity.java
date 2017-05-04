@@ -51,8 +51,8 @@ public class SplashActivity extends AppCompatActivity{
          Func0：与Action0非常相似，也有call（）方法，但是它是有返回值的，同样也有Func0、Func1...Func9;
          */
         Observable.timer(2000, TimeUnit.MILLISECONDS)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())//子线程
+                .observeOn(AndroidSchedulers.mainThread())//UI线程
                 .subscribe(new Action1<Long>() {
                     @Override
                     public void call(Long aLong) {

@@ -9,8 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.tanhao.anewbegin.R;
+import com.example.tanhao.anewbegin.base.BasePresenter.BasePresenter;
 import com.example.tanhao.anewbegin.inject.component.ActivityComponent;
 import com.example.tanhao.anewbegin.inject.component.DaggerActivityComponent;
+import com.example.tanhao.anewbegin.inject.module.ActivityModule;
+import com.example.tanhao.anewbegin.layout.TextViewAnimotion;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -21,7 +24,7 @@ import butterknife.Unbinder;
  * Created by tanhao on 2017/2/16.
  */
 
-public abstract class BaseActivity extends AppCompatActivity{
+public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity{
 
     /**
      * 由于移动设备一般定义屏幕左上角为坐标原点，向右为x轴增大方向，向下为y轴增大方向，
@@ -72,19 +75,25 @@ public abstract class BaseActivity extends AppCompatActivity{
     protected  ActivityComponent component;
     protected Toolbar toolbar;
     protected ImageView iv_back;
-    protected TextView title;
-    protected TextView tv_right;
+    protected TextViewAnimotion title;
+    protected ImageView tv_right;
+    protected Toolbar baseToolbar;
+    protected ImageView base_iv_back;
+    protected TextView base_title;
+    protected TextView base_tv_right;
     private Unbinder m;
+    protected T mBasePresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //The parent class is executed first
         setContentView(getContentView());
+        ButterKnife.bind(this);
         initComponent();
         initTooBar();
         initView();
-        inject();
+        initListener();
     }
 
     private void initTooBar() {
@@ -93,8 +102,16 @@ public abstract class BaseActivity extends AppCompatActivity{
 
         iv_back = (ImageView) findViewById(R.id.iv_back);
 
-        title = (TextView) findViewById(R.id.tv_toolbar_title);
-        tv_right = (TextView) findViewById(R.id.tv_toolbar_right);
+        title = (TextViewAnimotion) findViewById(R.id.tv_toolbar_title);
+        tv_right = (ImageView) findViewById(R.id.tv_toolbar_right);
+
+        baseToolbar = (Toolbar) findViewById(R.id.base_toolbar);
+
+        base_iv_back = (ImageView) findViewById(R.id.base_iv_back);
+
+        base_title = (TextView) findViewById(R.id.base_tv_toolbar_title);
+        base_tv_right = (TextView) findViewById(R.id.base_tv_toolbar_right);
+
     }
 
     @Override
@@ -110,6 +127,8 @@ public abstract class BaseActivity extends AppCompatActivity{
 
     protected abstract void inject();
 
+    protected abstract void initListener();
+
     /**
      * 该方法运行速度比onCreate快
      */
@@ -120,12 +139,19 @@ public abstract class BaseActivity extends AppCompatActivity{
     }
 
     private void initComponent(){
-        component = DaggerActivityComponent.builder().build();
+        component = DaggerActivityComponent.builder().activityModule(new ActivityModule(this)).build();
+        inject();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if(mBasePresenter != null){
+            mBasePresenter.onDestroy();
+            mBasePresenter = null;
+        }
         m.unbind();
     }
+
+
 }

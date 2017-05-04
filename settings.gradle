@@ -1,1 +1,1 @@
-include ':app', ':jnitext', ':anewbegin', ':TanHao', 'SwipeMenuListView', ':library'
+include ':app', ':jnitext', ':anewbegin', ':TanHao', ':mygreendaolib', 'SwipeMenuListView', ':library'

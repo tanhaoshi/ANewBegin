@@ -11,38 +11,43 @@
     app:contentInsetStart="0dp"
     app:popupTheme="@style/AppTheme.PopupOverlay">
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@drawable/toobar_selector"
+        >
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:background="@drawable/selector_title_image"
+            android:paddingLeft="5dp"
+            android:src="@drawable/toolbar_search"
+             />
 
-    <ImageView
-        android:id="@+id/iv_back"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="left"
-        android:background="@drawable/selector_title_image"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:src="@drawable/ic_title_back_white"
-        android:visibility="gone" />
+        <com.example.tanhao.anewbegin.layout.TextViewAnimotion
+            android:id="@+id/tv_toolbar_title"
+            style="@style/ToolbarCenterTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@null"
+           />
 
-
-    <TextView
-        android:id="@+id/tv_toolbar_title"
-        style="@style/ToolbarCenterTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        tools:text="标题" />
-
-    <TextView
-        android:id="@+id/tv_toolbar_right"
-        style="@style/ToolbarRightText"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="end"
-        android:gravity="center"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="确定"
-        android:visibility="gone" />
-
+        <ImageView
+            android:id="@+id/tv_toolbar_right"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:background="@drawable/selector_title_image"
+            android:src="@drawable/toolbar_music"
+            android:paddingRight="5dp"
+            />
+    </LinearLayout>
 
 </android.support.v7.widget.Toolbar>
