@@ -1,5 +1,7 @@
 package com.example.tanhao.anewbegin.network;
 
+import com.example.tanhao.anewbegin.modules.mvp.bean.LiveBaseBean;
+import com.example.tanhao.anewbegin.modules.mvp.bean.LiveListItemBean;
 import com.example.tanhao.anewbegin.modules.mvp.bean.NewsSummary;
 
 import java.util.List;
@@ -18,6 +20,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.PartMap;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 import retrofit2.http.Url;
@@ -130,5 +133,14 @@ public interface NetService {
     Observable<ResponseBody> uploadFiles(
             @Url String url,
             @PartMap Map<String, RequestBody> maps
+    );
+
+    //请求获取不同游戏的直播列表
+    @GET("/api/live/list/")
+    Observable<LiveBaseBean<List<LiveListItemBean>>> getLiveList(
+            @Query("offset") int offset,
+            @Query("limit") int limit,
+            @Query("live_type") String live_type,
+            @Query("game_type") String game_type
     );
 }

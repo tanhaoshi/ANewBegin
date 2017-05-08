@@ -20,11 +20,13 @@ public class Constant {
     public static final String base_url = "http://testtma.56yongche.com/becp/buyer/";
     //public static final String base_url = "http://192.168.191.1:8081/becp/buyer/";
     //newurl
-    public static final String config_url = "login?";
+    public static final String CONFIG_URL = "login?";
     // 网易 head
     public static final String HOST_NETEASE = "http://c.m.163.com/";
     //直播类型
     public static final String GAME_TYPE = "game_type";
     //直播标记
-    public static final String GAME_INDEX = "game_inde";
+    public static final String GAME_TITLE = "game_title";
+
+    public static final String BASE_LIVE_URL = "http://api.maxjia.com";
 }

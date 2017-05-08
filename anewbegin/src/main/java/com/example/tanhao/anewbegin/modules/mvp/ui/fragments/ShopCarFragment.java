@@ -34,6 +34,7 @@ public class ShopCarFragment extends MvpFragment {
     ViewPager mViewPager;
     private final List<String> liveNameList = new ArrayList<>();
     private final List<Fragment> mFragmentList = new ArrayList<>();
+    private final List<String> liveTitle = new ArrayList<>();
 
     @Override
     protected void initComponent() {
@@ -72,6 +73,7 @@ public class ShopCarFragment extends MvpFragment {
 
     private void setFragmentName(){
         Collections.addAll(liveNameList, App.getInstance().getResources().getStringArray(R.array.live_title));
+        Collections.addAll(liveTitle,App.getInstance().getResources().getStringArray(R.array.live_name));
         if(liveNameList !=null ) setLiveNameList(liveNameList);
         setViewPager(liveNameList , mFragmentList);
     }
@@ -80,7 +82,7 @@ public class ShopCarFragment extends MvpFragment {
         mFragmentList.clear();
         int count = list.size();
         for(int i = 0 ; i<count ; i++){
-            ShopCarListFragment fragment = ShopCarListFragment.newInstance(list.get(i),i);
+            ShopCarListFragment fragment = ShopCarListFragment.newInstance(list.get(i),liveTitle.get(i));
             mFragmentList.add(fragment);
         }
     }
@@ -91,21 +93,5 @@ public class ShopCarFragment extends MvpFragment {
         mTabLayout.setupWithViewPager(mViewPager);
         mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         mTabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.black));
-        mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
     }
 }

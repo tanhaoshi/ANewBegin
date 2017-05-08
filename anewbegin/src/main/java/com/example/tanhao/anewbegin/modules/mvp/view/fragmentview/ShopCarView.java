@@ -2,6 +2,8 @@ package com.example.tanhao.anewbegin.modules.mvp.view.fragmentview;
 
 import com.example.tanhao.anewbegin.base.BaseView.BaseView;
 
+import java.util.List;
+
 /**
  * @version 1.0
  * @author TanHao
@@ -10,4 +12,5 @@ import com.example.tanhao.anewbegin.base.BaseView.BaseView;
 
 public interface ShopCarView extends BaseView{
     //获取直播源的方法
+    void getLiveSource(List<?> list);
 }

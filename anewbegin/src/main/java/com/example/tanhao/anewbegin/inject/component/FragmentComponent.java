@@ -2,6 +2,7 @@ package com.example.tanhao.anewbegin.inject.component;
 
 import com.example.tanhao.anewbegin.inject.module.FragmentModule;
 import com.example.tanhao.anewbegin.modules.mvp.ui.fragments.BusinessFragment;
+import com.example.tanhao.anewbegin.modules.mvp.ui.fragments.ShopCarListFragment;
 
 import dagger.Component;
 
@@ -13,4 +14,5 @@ import dagger.Component;
 @Component(modules = FragmentModule.class)
 public interface FragmentComponent {
     void inject(BusinessFragment businessFragment);
+    void inject(ShopCarListFragment shopCarListFragment);
 }

@@ -33,7 +33,7 @@ public class BusinessInteractorImpl implements BusinessInteractor{
 
     @Override
     public Subscription getLoadDataType(String url, String id, int startPage, final RequestCallBack<List<NewsSummary>> requestCallBack) {
-        return NetWorkUtils.getInstance(App.getInstance())
+        return NetWorkUtils.getInstance(App.getInstance() ,1)
                 .createService(NetService.class)
                 .getNewLists(OkHttpUtil.getCacheControl(),url,id,startPage)
                 .subscribeOn(Schedulers.io())

@@ -41,4 +41,13 @@
         <item>4</item>
         <item>5</item>
     </integer-array>
+
+    <string-array name="live_name">
+        <item>lol</item>
+        <item>ow</item>
+        <item>dota2</item>
+        <item>hs</item>
+        <item>csgo</item>
+        <item>5</item>
+    </string-array>
 </resources>

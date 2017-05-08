@@ -75,23 +75,32 @@ public class NetWorkUtils {
     private Retrofit mRetrofit;
 
     //使用私有构造方法，避免通过构造方法引用实例
-    private NetWorkUtils(Context context){
+    private NetWorkUtils(Context context , int type){
         this.mContext = context;
                  mRetrofit = new Retrofit.Builder()
-                .baseUrl(Constant.HOST_NETEASE)
+                .baseUrl(isType(type))
                 .client(NetWorkUtils.getOkHttpClient())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
     }
 
-    public static NetWorkUtils getInstance(Context context){
+    private final String isType(int type){
+        return type == 1 ? Constant.HOST_NETEASE : Constant.BASE_LIVE_URL ;
+    }
+
+
+    public static NetWorkUtils getInstance(Context context , int type){
         if(sNetWorkUtils == null){
             synchronized(NetWorkUtils.class){
                 if(sNetWorkUtils == null){
-                    sNetWorkUtils = new NetWorkUtils(App.getInstance());
+                    sNetWorkUtils = new NetWorkUtils(App.getInstance(),type);
                 }
+
             }
+        }
+        if(type == 2){
+            sNetWorkUtils = new NetWorkUtils(App.getInstance(),type);
         }
         return sNetWorkUtils;
     }
@@ -123,7 +132,7 @@ public class NetWorkUtils {
      * Subscriber实现了Subscription接口
      * 实现了 56 网络接口对接
      */
-    private Observable.Transformer backTransformer(){
+    public static Observable.Transformer backTransformer(){
         return new Observable.Transformer() {
             @Override
             public Object call(Object observable) {

@@ -76,4 +76,5 @@ public class BasePresenter<V extends BaseView,T> implements PresenterLife,Reques
     public V getView(){
         return mView==null ? null : mView.get();
     }
+
 }
