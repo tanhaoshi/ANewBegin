@@ -80,4 +80,9 @@
     <color name="divider_color">#d3d3d3</color>
 
     <color name="business_color">#ece9e9</color>
+
+    <!-- 自定义直播头像 -->
+    <color name="divider">#BDBDBD</color>
+    <color name="color_secondary_text">#212121</color>
+
 </resources>

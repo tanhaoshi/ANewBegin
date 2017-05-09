@@ -113,8 +113,8 @@ dependencies {
     //converter-gson 与 adpter-rxjava
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
-    //万能adpater
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.7'
+    //RecyclerView Adapter库
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.8.6'
     // dialogutil工具 https://github.com/hss01248/DialogUtil
     compile 'com.github.hss01248:DialogUtil:1.0.7'
     //类似 电话薄 字母查找https://github.com/saiwu-bigkoo/Android-QuickSideBar

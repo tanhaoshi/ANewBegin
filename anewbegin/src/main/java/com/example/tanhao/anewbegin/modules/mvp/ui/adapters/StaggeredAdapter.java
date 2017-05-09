@@ -17,7 +17,7 @@ import java.util.List;
  * Created by Administrator on 2017/4/21.
  */
 
-public class StaggeredAdapter extends BaseQuickAdapter<NewsSummary>{
+public class StaggeredAdapter extends BaseQuickAdapter<NewsSummary,BaseViewHolder>{
 
 
     public StaggeredAdapter(int layoutResId, List<NewsSummary> data) {

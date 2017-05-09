@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/live_list"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <FrameLayout
+         android:layout_width="match_parent"
+         android:layout_height="120dp">
+
+     <TextView
+         android:id="@+id/live_name"
+         android:text="直播间名字"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="#80545454"
+         android:textColor="#ffffff"
+         android:textSize="12sp"
+         android:paddingLeft="5dp"/>
+
+        <ImageView
+            android:id="@+id/live_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_live_placeholder"
+            android:layout_marginTop="15dp"
+            android:background="@color/divider"
+        />
+ </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/live_relayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <ImageView
+            android:id="@+id/live_head"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentBottom="true"
+            android:paddingLeft="2dp"
+            android:src="@drawable/ic_avatar_default"
+            android:background="@drawable/shape_circle"
+        />
+
+        <TextView
+            android:id="@+id/live_talking"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginLeft="38dp"
+            android:layout_marginRight="50dp"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:layout_centerVertical="true"
+        />
+
+        <TextView
+            android:id="@+id/live_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:paddingRight="5dp"
+            android:drawableTop="@drawable/ic_visitor"
+            android:text="123456"
+            android:textSize="12sp"
+        />
+    </RelativeLayout>
+</LinearLayout>

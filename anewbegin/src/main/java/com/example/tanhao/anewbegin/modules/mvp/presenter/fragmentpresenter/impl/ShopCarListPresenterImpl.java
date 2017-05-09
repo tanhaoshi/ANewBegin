@@ -55,5 +55,6 @@ public class ShopCarListPresenterImpl extends BasePresenter<ShopCarView,List<Liv
     @Override
     public void onSuccess(List<LiveListItemBean> data) {
         super.onSuccess(data);
+        if(data != null) mView.get().getLiveSource(data);
     }
 }

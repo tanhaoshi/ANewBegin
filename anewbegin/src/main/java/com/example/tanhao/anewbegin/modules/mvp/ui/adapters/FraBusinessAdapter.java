@@ -17,7 +17,7 @@ import java.util.List;
  * Created by Administrator on 2017/4/17.
  */
 
-public class FraBusinessAdapter extends BaseQuickAdapter<NewsSummary.AdsBean> {
+public class FraBusinessAdapter extends BaseQuickAdapter<NewsSummary.AdsBean,BaseViewHolder> {
 
     public FraBusinessAdapter(int layoutResId, List<NewsSummary.AdsBean> data) {
         super(layoutResId, data);

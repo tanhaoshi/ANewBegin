@@ -8,9 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.ScrollView;
-import android.widget.Toast;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.tanhao.anewbegin.App;
 import com.example.tanhao.anewbegin.R;
 import com.example.tanhao.anewbegin.base.BaseView.MvpFragment;
@@ -118,12 +116,6 @@ public class BusinessFragment extends MvpFragment<BusinessPresenterImpl,Business
         mRecyclerView.setAdapter(fraBusinessAdapter);
         View view = View.inflate(App.getInstance(),R.layout.baseadapter_header_layout,null);
         fraBusinessAdapter.addHeaderView(view);
-        fraBusinessAdapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
-            @Override
-            public void onItemClick(View view, int i) {
-                Toast.makeText(App.getInstance(),"点击了:"+i,Toast.LENGTH_SHORT).show();
-            }
-        });
         recommendArea(data);
     }
 

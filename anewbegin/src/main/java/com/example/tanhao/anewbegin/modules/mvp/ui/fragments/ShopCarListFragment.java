@@ -3,13 +3,18 @@ package com.example.tanhao.anewbegin.modules.mvp.ui.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.example.tanhao.anewbegin.App;
 import com.example.tanhao.anewbegin.Constant;
 import com.example.tanhao.anewbegin.R;
 import com.example.tanhao.anewbegin.base.BaseView.MvpFragment;
+import com.example.tanhao.anewbegin.layout.layoutManager.DividerGridItemDecoration;
+import com.example.tanhao.anewbegin.modules.mvp.bean.LiveListItemBean;
 import com.example.tanhao.anewbegin.modules.mvp.presenter.fragmentpresenter.impl.ShopCarListPresenterImpl;
+import com.example.tanhao.anewbegin.modules.mvp.ui.adapters.ShopCarListAdapter;
 import com.example.tanhao.anewbegin.modules.mvp.view.fragmentview.ShopCarView;
 
 import java.util.List;
@@ -34,7 +39,7 @@ public class ShopCarListFragment extends MvpFragment<ShopCarListPresenterImpl , 
     @BindView(R.id.shop_recyclerview)
     RecyclerView mRecyclerView;
 
-    private String mGameType , mGameTitle;
+    private String mGameTitle;
     private int offset = 0;
     int limit = 20;
 
@@ -76,8 +81,11 @@ public class ShopCarListFragment extends MvpFragment<ShopCarListPresenterImpl , 
     }
 
     @Override
-    public void getLiveSource(List<?> list) {
-
+    public void getLiveSource(List<LiveListItemBean> list) {
+        ShopCarListAdapter shopCarListAdapter = new ShopCarListAdapter(list);
+        mRecyclerView.setLayoutManager(new GridLayoutManager(App.getInstance(),2));
+        mRecyclerView.addItemDecoration(new DividerGridItemDecoration(App.getInstance()));
+        mRecyclerView.setAdapter(shopCarListAdapter);
     }
 
     @Override
@@ -99,7 +107,6 @@ public class ShopCarListFragment extends MvpFragment<ShopCarListPresenterImpl , 
     public void loadData(boolean pullToRefresh) {
        mShopCarListPresenter.loadLiveSource(offset,limit,"",mGameTitle);
     }
-
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
