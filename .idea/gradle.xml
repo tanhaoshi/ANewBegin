@@ -18,6 +18,7 @@
             <option value="$PROJECT_DIR$/mygreendaolib" />
           </set>
         </option>
+        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>
