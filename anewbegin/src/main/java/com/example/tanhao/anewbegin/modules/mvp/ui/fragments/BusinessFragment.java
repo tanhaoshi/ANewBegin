@@ -140,6 +140,7 @@ public class BusinessFragment extends MvpFragment<BusinessPresenterImpl,Business
             }
             @Override
             public void onPageScrollStateChanged(int state) {
+
             }
         });
     }

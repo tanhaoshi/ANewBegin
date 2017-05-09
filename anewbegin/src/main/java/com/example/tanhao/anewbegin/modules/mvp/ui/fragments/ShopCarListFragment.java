@@ -7,6 +7,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.example.tanhao.anewbegin.App;
 import com.example.tanhao.anewbegin.Constant;
 import com.example.tanhao.anewbegin.R;
@@ -116,6 +118,15 @@ public class ShopCarListFragment extends MvpFragment<ShopCarListPresenterImpl , 
                loadData(false);
            }
         }
+    }
+
+    private void setListenerForRecyclerVIew(){
+       mRecyclerView.addOnItemTouchListener(new OnItemClickListener() {
+           @Override
+           public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
+               LiveListItemBean liveListItemBean = (LiveListItemBean) adapter.getData().get(position);
+           }
+       });
     }
 
 }

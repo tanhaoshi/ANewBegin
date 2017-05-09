@@ -32,15 +32,15 @@
         <activity
             android:name=".modules.home.activity.HomeActivity"
             android:theme="@style/LoginThem"/>
-
         <activity
             android:name=".modules.mvp.ui.activitys.RegisterActivity"
             android:theme="@style/LoginThem"/>
-
-        <activity android:name=".modules.mvp.ui.activitys.MainActivty"
-                  android:theme="@style/LoginThem">
+        <activity
+            android:name=".modules.mvp.ui.activitys.MainActivty"
+            android:theme="@style/LoginThem">
         </activity>
-
+        <activity android:name=".modules.mvp.ui.activitys.LivePlayActivity">
+        </activity>
     </application>
 
 </manifest>
