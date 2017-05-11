@@ -33,26 +33,6 @@ public class BusinessPresenterImpl extends BasePresenter<BusinessView,List<NewsS
     }
 
     @Override
-    public void showProgress(boolean isTrue) {
-
-    }
-
-    @Override
-    public void hideProgress() {
-
-    }
-
-    @Override
-    public void showError(String msg, boolean pullToRefresh) {
-
-    }
-
-    @Override
-    public void loadData(boolean pullToRefresh) {
-
-    }
-
-    @Override
     public void onSuccess(List<NewsSummary> data) {
         super.onSuccess(data);
         mView.get().loadSussec(data);

@@ -39,7 +39,8 @@
             android:name=".modules.mvp.ui.activitys.MainActivty"
             android:theme="@style/LoginThem">
         </activity>
-        <activity android:name=".modules.mvp.ui.activitys.LivePlayActivity">
+        <activity android:name=".modules.mvp.ui.activitys.LivePlayActivity"
+                  android:theme="@style/LoginThem">
         </activity>
     </application>
 

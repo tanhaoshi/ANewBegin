@@ -1,14 +1,13 @@
-package com.example.tanhao.anewbegin.modules.mvp.module.fragmentmodule.impl;
+package com.example.tanhao.anewbegin.modules.mvp.module.impl;
 
 import com.example.tanhao.anewbegin.App;
 import com.example.tanhao.anewbegin.modules.mvp.bean.LiveBaseBean;
-import com.example.tanhao.anewbegin.modules.mvp.bean.LiveListItemBean;
-import com.example.tanhao.anewbegin.modules.mvp.module.fragmentmodule.ShopCarInteractor;
+import com.example.tanhao.anewbegin.modules.mvp.bean.LiveDetailBean;
+import com.example.tanhao.anewbegin.modules.mvp.module.LivePlayInteractor;
 import com.example.tanhao.anewbegin.network.NetService;
 import com.example.tanhao.anewbegin.network.NetWorkUtils;
 import com.example.tanhao.anewbegin.network.RequestCallBack;
-
-import java.util.List;
+import com.socks.library.KLog;
 
 import javax.inject.Inject;
 
@@ -20,38 +19,39 @@ import rx.schedulers.Schedulers;
 /**
  * @version 1.0
  * @author TanHao
- * Created by Administrator on 2017/4/25.
+ * Created by Administrator on 2017/5/10.
  */
 
-public class ShopCarInteractorImpl implements ShopCarInteractor{
+public class LivePlayInteractorImpl implements LivePlayInteractor{
 
     @Inject
-    public ShopCarInteractorImpl(){
+    public LivePlayInteractorImpl(){
 
     }
 
     @Override
-    public Subscription loadLiveSourceList(int offset, int limit, String live_type, String game_type, final RequestCallBack<List<LiveListItemBean>> requestCallBack) {
+    public Subscription getLiveStream(String live_type, String live_id, String game_type, final RequestCallBack<LiveDetailBean> requestCallBack) {
         return NetWorkUtils.getInstance(App.getInstance(),2)
                 .createService(NetService.class)
-                .getLiveList(offset,limit,live_type,game_type)
+                .getLiveDetail(live_type ,live_id,game_type)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<LiveBaseBean<List<LiveListItemBean>>>() {
+                .subscribe(new Subscriber<LiveBaseBean<LiveDetailBean>>() {
                     @Override
                     public void onCompleted() {
-                       requestCallBack.onCompleted();
+                      requestCallBack.onCompleted();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        requestCallBack.onError(e.getMessage().toString() , false);
+                       requestCallBack.onError(e.getMessage(),true);
                     }
 
                     @Override
-                    public void onNext(LiveBaseBean<List<LiveListItemBean>> listLiveBaseBean) {
-                        requestCallBack.onSuccess(listLiveBaseBean.getResult());
+                    public void onNext(LiveBaseBean<LiveDetailBean> liveDetailBeanLiveBaseBean) {
+                        KLog.i("程序进来了几次？");
+                        requestCallBack.onSuccess(liveDetailBeanLiveBaseBean.getResult());
                     }
                 });
     }

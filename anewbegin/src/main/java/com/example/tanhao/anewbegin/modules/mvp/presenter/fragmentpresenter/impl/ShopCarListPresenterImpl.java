@@ -33,26 +33,6 @@ public class ShopCarListPresenterImpl extends BasePresenter<ShopCarView,List<Liv
     }
 
     @Override
-    public void showProgress(boolean isTrue) {
-
-    }
-
-    @Override
-    public void hideProgress() {
-
-    }
-
-    @Override
-    public void showError(String msg, boolean pullToRefresh) {
-
-    }
-
-    @Override
-    public void loadData(boolean pullToRefresh) {
-
-    }
-
-    @Override
     public void onSuccess(List<LiveListItemBean> data) {
         super.onSuccess(data);
         if(data != null) mView.get().getLiveSource(data);

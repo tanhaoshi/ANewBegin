@@ -1,6 +1,7 @@
 package com.example.tanhao.anewbegin.network;
 
 import com.example.tanhao.anewbegin.modules.mvp.bean.LiveBaseBean;
+import com.example.tanhao.anewbegin.modules.mvp.bean.LiveDetailBean;
 import com.example.tanhao.anewbegin.modules.mvp.bean.LiveListItemBean;
 import com.example.tanhao.anewbegin.modules.mvp.bean.NewsSummary;
 
@@ -141,6 +142,14 @@ public interface NetService {
             @Query("offset") int offset,
             @Query("limit") int limit,
             @Query("live_type") String live_type,
+            @Query("game_type") String game_type
+    );
+
+    //请求获取直播详情
+    @GET("/api/live/detail/")
+    Observable<LiveBaseBean<LiveDetailBean>> getLiveDetail(
+            @Query("live_type") String live_type,
+            @Query("live_id") String live_id,
             @Query("game_type") String game_type
     );
 }

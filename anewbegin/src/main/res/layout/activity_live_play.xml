@@ -41,6 +41,13 @@
             android:layout_height="match_parent"
              />
 
+        <include
+            layout="@layout/layout_controller_landscape"
+            android:visibility="gone" />
+
+        <include
+            layout="@layout/layout_controller_portrait"
+             />
    </FrameLayout>
 
         <LinearLayout
@@ -59,12 +66,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:id="@+id/textView"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:id="@+id/textView2"/>
 
             </LinearLayout>
 

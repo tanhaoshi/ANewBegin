@@ -84,5 +84,6 @@
     <!-- 自定义直播头像 -->
     <color name="divider">#BDBDBD</color>
     <color name="color_secondary_text">#212121</color>
+    <color name="color_primary">#FF166CDC</color>
 
 </resources>

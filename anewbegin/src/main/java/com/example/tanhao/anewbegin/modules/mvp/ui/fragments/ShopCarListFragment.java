@@ -1,5 +1,6 @@
 package com.example.tanhao.anewbegin.modules.mvp.ui.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -8,7 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.OnItemClickListener;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.example.tanhao.anewbegin.App;
 import com.example.tanhao.anewbegin.Constant;
 import com.example.tanhao.anewbegin.R;
@@ -16,6 +17,7 @@ import com.example.tanhao.anewbegin.base.BaseView.MvpFragment;
 import com.example.tanhao.anewbegin.layout.layoutManager.DividerGridItemDecoration;
 import com.example.tanhao.anewbegin.modules.mvp.bean.LiveListItemBean;
 import com.example.tanhao.anewbegin.modules.mvp.presenter.fragmentpresenter.impl.ShopCarListPresenterImpl;
+import com.example.tanhao.anewbegin.modules.mvp.ui.activitys.LivePlayActivity;
 import com.example.tanhao.anewbegin.modules.mvp.ui.adapters.ShopCarListAdapter;
 import com.example.tanhao.anewbegin.modules.mvp.view.fragmentview.ShopCarView;
 
@@ -80,6 +82,8 @@ public class ShopCarListFragment extends MvpFragment<ShopCarListPresenterImpl , 
         if(getUserVisibleHint()){
             loadData(false);
         }
+
+        setListenerForRecyclerVIew();
     }
 
     @Override
@@ -121,12 +125,16 @@ public class ShopCarListFragment extends MvpFragment<ShopCarListPresenterImpl , 
     }
 
     private void setListenerForRecyclerVIew(){
-       mRecyclerView.addOnItemTouchListener(new OnItemClickListener() {
-           @Override
-           public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
-               LiveListItemBean liveListItemBean = (LiveListItemBean) adapter.getData().get(position);
-           }
+        mRecyclerView.addOnItemTouchListener(new OnItemChildClickListener() {
+            @Override
+            public void onSimpleItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                LiveListItemBean liveListItemBean = (LiveListItemBean) adapter.getData().get(position);
+                Intent intent = new Intent(getActivity() , LivePlayActivity.class);
+                intent.putExtra("livetype", liveListItemBean.getLive_type());
+                intent.putExtra("liveid", liveListItemBean.getLive_id());
+                intent.putExtra("gametype", liveListItemBean.getGame_type());
+                startActivity(intent);
+            }
        });
     }
-
 }

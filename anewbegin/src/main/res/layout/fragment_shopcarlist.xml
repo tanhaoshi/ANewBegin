@@ -6,6 +6,7 @@
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/shop_refresh"
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

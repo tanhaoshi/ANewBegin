@@ -26,7 +26,7 @@ android {
         applicationId "com.example.tanhao.anewbegin"
         //minSdkVersion 则是应用可以运行的最低要求。
         // minSdkVersion 是 Google Play 商店用来判断用户设备是否可以安装某个应用的标志之一。
-        minSdkVersion 15
+        minSdkVersion 19
         //targetSdkVersion 是 Android 提供向前兼容的主要依据，在应用的 targetSdkVersion
         // 没有更新之前系统不会应用最新的行为变化。这允许你在适应新的行为变化之前就可以使用新的 API
 

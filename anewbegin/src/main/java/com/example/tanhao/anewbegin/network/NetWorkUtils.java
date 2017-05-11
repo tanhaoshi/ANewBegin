@@ -76,7 +76,6 @@ public class NetWorkUtils {
 
     //使用私有构造方法，避免通过构造方法引用实例
     private NetWorkUtils(Context context , int type){
-        this.mContext = context;
                  mRetrofit = new Retrofit.Builder()
                 .baseUrl(isType(type))
                 .client(NetWorkUtils.getOkHttpClient())
