@@ -50,7 +50,6 @@ public class LivePlayInteractorImpl implements LivePlayInteractor{
 
                     @Override
                     public void onNext(LiveBaseBean<LiveDetailBean> liveDetailBeanLiveBaseBean) {
-                        KLog.i("程序进来了几次？");
                         requestCallBack.onSuccess(liveDetailBeanLiveBaseBean.getResult());
                     }
                 });
