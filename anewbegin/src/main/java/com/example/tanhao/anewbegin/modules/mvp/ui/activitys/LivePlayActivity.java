@@ -1,6 +1,8 @@
 package com.example.tanhao.anewbegin.modules.mvp.ui.activitys;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.os.PowerManager;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,12 +25,14 @@ import com.pili.pldroid.player.AVOptions;
 import com.pili.pldroid.player.PLMediaPlayer;
 
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class LivePlayActivity extends BaseActivity<LivePlayPresenterImpl> implements
         LivePlayView ,PLMediaPlayer.OnPreparedListener,
@@ -48,6 +53,8 @@ public class LivePlayActivity extends BaseActivity<LivePlayPresenterImpl> implem
     Button btn_stream_360p_landscape;
     @BindView(R.id.iv_play_pause_landscape)
     ImageView iv_play_pause_landscape;
+    @BindView(R.id.layout_portrait)
+    RelativeLayout layout_portrait;
 
     @Inject
     LivePlayPresenterImpl mLivePlayPresenter;
@@ -60,6 +67,12 @@ public class LivePlayActivity extends BaseActivity<LivePlayPresenterImpl> implem
     private int surfacePortraitWidth;
     private int surfacePortraitHeight;
     private List<LiveDetailBean.StreamListBean> streamList = new ArrayList<>();//直播流列表
+
+    private LiveHandler mLiveHandler = new LiveHandler(this);
+    private static final int HANDLER_HEADTITLE = 100 ;
+    private static final int VALID_TIME = 5 * 1000 ;
+    private boolean isControllerHiden = false;
+    private boolean isFullscreen = false;   //全屏标志位
 
     @Override
     protected int getContentView() {
@@ -168,6 +181,7 @@ public class LivePlayActivity extends BaseActivity<LivePlayPresenterImpl> implem
 
         mMediaPlayer.setWakeMode(getApplicationContext(), PowerManager.PARTIAL_WAKE_LOCK);
         mMediaPlayer.setDisplay(surfaceView.getHolder());
+
     }
 
     @Override
@@ -177,8 +191,10 @@ public class LivePlayActivity extends BaseActivity<LivePlayPresenterImpl> implem
 
     @Override
     public boolean onError(PLMediaPlayer plMediaPlayer, int i) {
-        Toast.makeText(this,"偷流出现错误了!",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"偷流地址出现错误了!",Toast.LENGTH_SHORT).show();
         progressbar.setVisibility(View.GONE);
+//        mLiveHandler.removeMessages(HANDLER_HEADTITLE);
+//        mLiveHandler.sendEmptyMessageAtTime(HANDLER_HEADTITLE,VALID_TIME);
         return true;
     }
 
@@ -211,6 +227,8 @@ public class LivePlayActivity extends BaseActivity<LivePlayPresenterImpl> implem
                 isPause = false;
                 iv_play_pause_landscape.setImageResource(isPause ? R.drawable.selector_btn_play : R.drawable.selector_btn_pause);
                 Log.d("PLMediaPlayer", "onInfo: MEDIA_INFO_VIDEO_RENDERING_START");
+                mLiveHandler.removeMessages(HANDLER_HEADTITLE);
+                mLiveHandler.sendEmptyMessageAtTime(HANDLER_HEADTITLE,VALID_TIME);
                 break;
             default:
                 Log.d("PLMediaPlayer", "onInfo: " + what);
@@ -264,6 +282,43 @@ public class LivePlayActivity extends BaseActivity<LivePlayPresenterImpl> implem
             mMediaPlayer.stop();
             mMediaPlayer.release();
             mMediaPlayer = null;
+        }
+    }
+
+    private static class LiveHandler extends Handler{
+
+        private final WeakReference<LivePlayActivity> mWeakReference;
+
+        private  LiveHandler(LivePlayActivity livePlayActivity){
+             mWeakReference = new WeakReference<LivePlayActivity>(livePlayActivity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            LivePlayActivity livePlayActivity = mWeakReference.get();
+            if(livePlayActivity != null){
+                switch (msg.what){
+                     case 100:
+                         livePlayActivity.layout_portrait.setVisibility(View.GONE);
+                         livePlayActivity.isControllerHiden = true;
+                        break;
+                }
+            }
+        }
+    }
+
+    @OnClick({R.id.surfaceview})
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.surfaceview:
+                if(isControllerHiden){
+                   //当我点击，判断现在是否是隐藏 如果是隐藏的话我就让它出现
+                    layout_portrait.setVisibility(View.VISIBLE);
+//                    mLiveHandler.removeMessages(HANDLER_HEADTITLE);
+//                    mLiveHandler.sendEmptyMessageAtTime(HANDLER_HEADTITLE,VALID_TIME);
+                }
+                break;
         }
     }
 }
