@@ -193,8 +193,6 @@ public class LivePlayActivity extends BaseActivity<LivePlayPresenterImpl> implem
     public boolean onError(PLMediaPlayer plMediaPlayer, int i) {
         Toast.makeText(this,"偷流地址出现错误了!",Toast.LENGTH_SHORT).show();
         progressbar.setVisibility(View.GONE);
-//        mLiveHandler.removeMessages(HANDLER_HEADTITLE);
-//        mLiveHandler.sendEmptyMessageAtTime(HANDLER_HEADTITLE,VALID_TIME);
         return true;
     }
 
@@ -315,8 +313,6 @@ public class LivePlayActivity extends BaseActivity<LivePlayPresenterImpl> implem
                 if(isControllerHiden){
                    //当我点击，判断现在是否是隐藏 如果是隐藏的话我就让它出现
                     layout_portrait.setVisibility(View.VISIBLE);
-//                    mLiveHandler.removeMessages(HANDLER_HEADTITLE);
-//                    mLiveHandler.sendEmptyMessageAtTime(HANDLER_HEADTITLE,VALID_TIME);
                 }
                 break;
         }
