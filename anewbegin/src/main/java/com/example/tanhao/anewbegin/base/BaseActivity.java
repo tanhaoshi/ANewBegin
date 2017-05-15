@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -112,12 +111,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         base_title = (TextView) findViewById(R.id.base_tv_toolbar_title);
         base_tv_right = (TextView) findViewById(R.id.base_tv_toolbar_right);
 
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i("BaseActivity",getClass().getSimpleName().toString());
     }
 
     /**  ==================  所有父类继承的行为  ==================== **/

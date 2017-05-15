@@ -44,6 +44,7 @@
             android:theme="@style/LoginThem">
         </activity>
         <activity android:name=".modules.mvp.ui.activitys.LivePlayActivity"
+                  android:configChanges="orientation|screenSize|keyboardHidden|screenLayout"
                   android:theme="@style/LoginThem">
         </activity>
     </application>

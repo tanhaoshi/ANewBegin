@@ -14,19 +14,18 @@
         android:layout_height="wrap_content"
         android:layout_weight="4">
 
-        <SurfaceView
+        <com.pili.pldroid.player.widget.PLVideoTextureView
             android:id="@+id/surfaceview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="?selectableItemBackgroundBorderless" />
+            />
 
         <FrameLayout
             android:id="@+id/progressbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/divider"
-            android:visibility="gone">
-
+            android:background="@color/black"
+            >
             <ProgressBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,6 +47,7 @@
         <include
             layout="@layout/layout_controller_portrait"
              />
+
    </FrameLayout>
 
         <LinearLayout
@@ -57,33 +57,6 @@
             android:layout_weight="2"
             android:orientation="vertical"
             android:visibility="visible">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/textView"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/textView2"/>
-
-            </LinearLayout>
-
-            <FrameLayout
-                android:id="@+id/layout_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#fff" />
-
         </LinearLayout>
 
 </LinearLayout>
